@@ -1,256 +1,61 @@
+/* Style de base */
 body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    overflow-x: hidden;
 }
 
 .container {
     display: flex;
     align-items: center;
-    width: 100%;
-    justify-content: space-between;
-    padding: 20px;
-    margin-top: 10px;
+    justify-content: center;
+    position: relative;
+    margin-top: 20px;
 }
 
 .pdp {
-    width: 100px;
-    height: 100px;
-    background-image: url('https://cdn.discordapp.com/attachments/1273663458864529560/1277363375843709099/20240825_220731.jpg?ex=66cce4d9&is=66cb9359&hm=8b56d8592865f6a46b4700eef94343c74021c3e238fc47e1090fb586216186f0');
+    width: 150px;
+    height: 150px;
+    background-image: url('https://cdn.discordapp.com/attachments/1277363375843709099/20240825_220731.jpg?ex=66cce4d9&is=66cb9359&hm=8b56d8592865f6a46b4700eef94343c74021c3e238fc47e1090fb586216186f0&');
     background-size: cover;
-    background-position: center;
     border-radius: 50%;
-    transform: translateX(-100vw);
-    transition: transform 1s ease-in-out;
+    position: relative;
+    z-index: 1;
 }
 
 .status {
     display: flex;
     align-items: center;
-    width: 100px;
-    height: 50px;
-    background-color: #cccccc;
-    border-radius: 25px;
-    justify-content: center;
-    font-family: Arial, sans-serif;
-    font-size: 18px;
-    color: #fff;
-    transform: translateX(100vw);
-    transition: transform 1s ease-in-out;
+    background: #f0f0f0;
+    border-radius: 15px;
+    padding: 5px 15px;
+    margin-left: 20px;
+    z-index: 1;
 }
 
-.status .dot {
-    width: 12px;
-    height: 12px;
-    background-color: #00ff00;
+.dot {
+    width: 10px;
+    height: 10px;
+    background: lightgreen;
     border-radius: 50%;
-    margin-right: 8px;
-    box-shadow: 0 0 5px #00ff00;
-    animation: blink 1s infinite;
-}
-
-@keyframes blink {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.5;
-    }
-}
-
-.move-together .pdp {
-    transform: translateX(calc(50vw - 150px));
-}
-
-.move-together .status {
-    transform: translateX(calc(-50vw + 150px));
+    margin-right: 5px;
 }
 
 .terminal-container {
-    margin-top: 50px;
-    width: 80%;
-    max-width: 800px;
-    background-color: #2d2d2d;
-    color: #ffffff;
-    font-family: "Courier New", Courier, monospace;
+    margin: 20px;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
-    min-height: 200px;
-    position: relative;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background: #000;
+    color: #fff;
+    font-family: monospace;
 }
 
 .terminal {
     white-space: pre-wrap;
-}
-
-.blink-cursor {
-    border-right: 2px solid #ffffff;
-    display: inline;
-    animation: blink-cursor 1s infinite;
-}
-
-#hiddenInput {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-    background: none;
-    color: transparent;
-    outline: none;
-    cursor: default;
-}
-
-@keyframes blink-cursor {
-    0% { border-right-color: #ffffff; }
-    50% { border-right-color: transparent; }
-    100% { border-right-color: #ffffff; }
-}
-
-.skills-container {
-    margin-top: 20px;
-    width: 80%;
-    max-width: 800px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-.skill {
-    margin: 10px 0;
-    width: 100%;
-    position: relative;
-}
-
-.skill-label {
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    color: #000;
-    text-align: left;
-    margin-bottom: 5px;
-    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
-}
-
-.skill-bar {
-    width: 100%;
-    height: 20px;
-    background-color: #ccc;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.skill-bar-fill {
-    height: 100%;
-    width: 0;
-    background-color: #daa520;
-    border-radius: 10px;
-    transition: width 2s ease;
-}
-
-.animate {
-    width: calc(var(--level) * 100%);
-}
-
-/* Styles généraux et animations */
-.hidden {
-    display: none;
-}
-
-.development-section {
-    margin-top: 30px;
-    text-align: center;
-}
-
-.development-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    position: relative;
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s ease, transform 1s ease;
-}
-
-.development-title.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.development-title span {
-    position: relative;
-}
-
-.development-title span:before {
-    content: "";
-    position: absolute;
-    width: 70%;
-    height: 2px;
-    background-color: black;
-    bottom: -5px;
-    left: 15%;
-}
-
-.project-card {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    width: 250px;
-    margin: 0 auto;
-    padding: 15px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.project-card img {
-    width: 100%;
-    border-radius: 10px;
-}
-
-.project-card:hover {
-    transform: scale(1.05);
-}
-
-.project-info h3 {
-    margin: 10px 0;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.click-text {
-    font-size: 14px;
-    color: grey;
-}
-
-.project-details {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    max-width: 500px;
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    z-index: 100;
-    text-align: center;
-    display: none;
-}
-
-.project-details img {
-    width: 100%;
-    border-radius: 10px;
+    overflow: auto;
 }
 
 .overlay {
@@ -259,7 +64,144 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 50;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-card {
+    width: 300px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s;
+    margin: 0 auto;
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+}
+
+.project-card img {
+    width: 100%;
+    height: auto;
+}
+
+.project-info {
+    padding: 10px;
+    text-align: center;
+}
+
+.project-info h3 {
+    margin: 10px 0;
+}
+
+.click-text {
+    color: #888;
+}
+
+.project-details {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 600px;
+    width: 80%;
+    z-index: 101;
     display: none;
+}
+
+.project-details img {
+    width: 100%;
+    height: auto;
+}
+
+.project-details h3 {
+    margin-top: 20px;
+}
+
+.project-details p {
+    margin-top: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.development-section {
+    margin: 40px auto;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.development-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.development-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-color: #000;
+    text-decoration-thickness: 2px;
+    display: inline-block;
+    position: relative;
+}
+
+.development-title::before,
+.development-title::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 50px;
+    height: 2px;
+    background: #000;
+    transform: translateY(-50%);
+}
+
+.development-title::before {
+    left: 0;
+}
+
+.development-title::after {
+    right: 0;
+}
+
+.skill {
+    margin: 10px;
+    text-align: center;
+}
+
+.skill-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.skill-bar {
+    width: 200px;
+    height: 20px;
+    background: #eee;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    margin: 10px auto;
+}
+
+.skill-bar-fill {
+    height: 100%;
+    background: gold;
+    border-radius: 10px;
+    width: 0;
+    transition: width 2s ease-in-out;
 }
