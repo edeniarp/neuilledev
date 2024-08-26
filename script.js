@@ -1,8 +1,8 @@
 window.onload = function() {
     setTimeout(function() {
-        document.querySelector('.development-section').classList.add('visible');
+        document.querySelector('.container').classList.add('move-together');
         startTerminalAnimation();
-    }, 1000); // Attendre 1 seconde avant de faire apparaître la section en développement
+    }, 1000);
 };
 
 function startTerminalAnimation() {
@@ -97,7 +97,7 @@ function displaySkills() {
         { name: "Rust", level: 0.6 }
     ];
 
-    skillsContainer.innerHTML = ''; // Vide le container avant d'ajouter les compétences
+    let delay = 0;
 
     skills.forEach(skill => {
         const skillElement = document.createElement('div');
@@ -105,22 +105,48 @@ function displaySkills() {
         skillElement.innerHTML = `
             <div class="skill-label">${skill.name}</div>
             <div class="skill-bar">
-                <div class="skill-bar-fill" style="width: ${skill.level * 100}%;"></div>
+                <div class="skill-bar-fill" style="--level: ${skill.level};"></div>
             </div>
         `;
         skillsContainer.appendChild(skillElement);
+
+        // Ajoute un délai pour que les jauges apparaissent une à une
+        setTimeout(() => {
+            skillElement.querySelector('.skill-bar-fill').classList.add('animate');
+        }, delay);
+
+        delay += 2500; // 2.5s de délai entre chaque jauge
     });
+
+    // Afficher la section "En développement :" après les jauges
+    setTimeout(() => {
+        document.querySelector('.development-section').classList.remove('hidden');
+        document.querySelector('.development-title').classList.add('show');
+    }, delay + 500); // Ajoute un petit délai après les jauges
 }
 
 function openProjectDetails() {
-    document.querySelector('.overlay').classList.remove('hidden');
-    document.getElementById('projectDetails').classList.remove('hidden');
+    const overlay = document.querySelector('.overlay');
+    const projectDetails = document.getElementById('projectDetails');
+
+    // Afficher l'overlay et les détails du projet
+    overlay.classList.remove('hidden');
+    projectDetails.classList.remove('hidden');
+    document.body.style.overflow = 'hidden'; // Empêche le défilement de la page
+
+    // Ajouter un écouteur pour fermer les détails du projet
+    overlay.addEventListener('click', closeProjectDetails);
 }
 
 function closeProjectDetails() {
-    document.querySelector('.overlay').classList.add('hidden');
-    document.getElementById('projectDetails').classList.add('hidden');
-}
+    const overlay = document.querySelector('.overlay');
+    const projectDetails = document.getElementById('projectDetails');
 
-// Ajoute un gestionnaire d'événements pour fermer l'encadré détaillé lorsqu'on clique en dehors
-document.querySelector('.overlay').addEventListener('click', closeProjectDetails);
+    // Cacher l'overlay et les détails du projet
+    overlay.classList.add('hidden');
+    projectDetails.classList.add('hidden');
+    document.body.style.overflow = 'auto'; // Réactiver le défilement de la page
+
+    // Supprimer l'écouteur d'événements
+    overlay.removeEventListener('click', closeProjectDetails);
+}
