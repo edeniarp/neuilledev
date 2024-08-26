@@ -2,8 +2,8 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
     background-color: #f0f0f0;
 }
@@ -12,7 +12,8 @@ body {
     display: flex;
     align-items: center;
     position: relative;
-    margin: 10px;
+    transition: transform 1s ease-in-out;
+    transform: translateX(-50px); /* Écart initial */
 }
 
 .pdp {
@@ -22,13 +23,12 @@ body {
     background-size: cover;
     background-position: center;
     border-radius: 50%;
-    transition: transform 1s ease-in-out;
 }
 
 .status {
     display: flex;
     align-items: center;
-    margin-left: 10px;
+    margin-left: 20px;
     width: 100px;
     height: 50px;
     background-color: #cccccc;
@@ -37,7 +37,6 @@ body {
     font-family: Arial, sans-serif;
     font-size: 18px;
     color: #fff; /* Texte en blanc */
-    transition: transform 1s ease-in-out;
 }
 
 .status .dot {
@@ -59,10 +58,6 @@ body {
     }
 }
 
-.move-left {
-    transform: translateX(-150px);
-}
-
-.move-right {
-    transform: translateX(150px);
+.move-together {
+    transform: translateX(0); /* Se déplacer pour se rapprocher */
 }
