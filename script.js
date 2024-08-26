@@ -101,15 +101,11 @@ function displaySkills() {
         const skillElement = document.createElement('div');
         skillElement.className = 'skill';
         skillElement.innerHTML = `
-            <div>${skill.name}</div>
-            <div class="skill-bar ${skill.class}" style="width: 0;"></div>
+            <div class="skill-label">${skill.name}</div>
+            <div class="skill-bar ${skill.class}">
+                <div class="skill-bar-inner" style="transform: scaleY(${skill.level / 100});"></div>
+            </div>
         `;
         skillsContainer.appendChild(skillElement);
-
-        // Animer le remplissage des jauges après un court délai
-        setTimeout(() => {
-            const skillBar = skillElement.querySelector('.skill-bar');
-            skillBar.style.width = skill.level + '%';
-        }, 100);
     });
 }
