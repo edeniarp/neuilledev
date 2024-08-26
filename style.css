@@ -14,6 +14,7 @@ body {
     position: relative;
     width: 100%; /* Utiliser toute la largeur */
     justify-content: space-between; /* Les éléments sont aux extrémités */
+    padding: 20px;
 }
 
 .pdp {
@@ -23,7 +24,7 @@ body {
     background-size: cover;
     background-position: center;
     border-radius: 50%;
-    transform: translateX(-150%); /* Départ à gauche hors de l'écran */
+    transform: translateX(-100vw); /* Départ à gauche hors de l'écran */
     transition: transform 1s ease-in-out;
 }
 
@@ -38,7 +39,7 @@ body {
     font-family: Arial, sans-serif;
     font-size: 18px;
     color: #fff; /* Texte en blanc */
-    transform: translateX(150%); /* Départ à droite hors de l'écran */
+    transform: translateX(100vw); /* Départ à droite hors de l'écran */
     transition: transform 1s ease-in-out;
 }
 
@@ -62,9 +63,9 @@ body {
 }
 
 .move-together .pdp {
-    transform: translateX(0); /* Se déplacer à sa position normale */
+    transform: translateX(calc(50vw - 150px)); /* Se déplacer au centre */
 }
 
 .move-together .status {
-    transform: translateX(0); /* Se déplacer à sa position normale */
+    transform: translateX(calc(-50vw + 150px)); /* Se déplacer au centre */
 }
