@@ -93,7 +93,7 @@ function displaySkills() {
         { name: "HTML", level: 1 },
         { name: "CSS", level: 0.9 },
         { name: "JavaScript", level: 0.87 },
-        { name: "Python", level: 93 },
+        { name: "Python", level: 0.93 },
         { name: "Rust", level: 0.6 }
     ];
 
