@@ -2,8 +2,9 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Alignement en haut de la page */
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     height: 100vh;
     background-color: #f0f0f0;
 }
@@ -11,10 +12,10 @@ body {
 .container {
     display: flex;
     align-items: center;
-    position: relative;
-    width: 100%; /* Utiliser toute la largeur */
-    justify-content: space-between; /* Les éléments sont aux extrémités */
+    width: 100%;
+    justify-content: space-between;
     padding: 20px;
+    margin-top: 10px;
 }
 
 .pdp {
@@ -24,7 +25,7 @@ body {
     background-size: cover;
     background-position: center;
     border-radius: 50%;
-    transform: translateX(-100vw); /* Départ à gauche hors de l'écran */
+    transform: translateX(-100vw);
     transition: transform 1s ease-in-out;
 }
 
@@ -38,8 +39,8 @@ body {
     justify-content: center;
     font-family: Arial, sans-serif;
     font-size: 18px;
-    color: #fff; /* Texte en blanc */
-    transform: translateX(100vw); /* Départ à droite hors de l'écran */
+    color: #fff;
+    transform: translateX(100vw);
     transition: transform 1s ease-in-out;
 }
 
@@ -63,9 +64,38 @@ body {
 }
 
 .move-together .pdp {
-    transform: translateX(calc(50vw - 150px)); /* Se déplacer au centre */
+    transform: translateX(calc(50vw - 150px));
 }
 
 .move-together .status {
-    transform: translateX(calc(-50vw + 150px)); /* Se déplacer au centre */
+    transform: translateX(calc(-50vw + 150px));
+}
+
+.terminal-container {
+    margin-top: 100px;
+    width: 80%;
+    max-width: 800px;
+    background-color: #2d2d2d;
+    color: #00ff00;
+    font-family: "Courier New", Courier, monospace;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+    min-height: 200px;
+}
+
+.terminal {
+    white-space: pre-wrap;
+}
+
+.blink-cursor {
+    border-right: 2px solid #00ff00;
+    display: inline;
+    animation: blink-cursor 1s infinite;
+}
+
+@keyframes blink-cursor {
+    0% { border-right-color: #00ff00; }
+    50% { border-right-color: transparent; }
+    100% { border-right-color: #00ff00; }
 }
