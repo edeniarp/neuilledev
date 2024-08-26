@@ -114,3 +114,31 @@ body {
     50% { border-right-color: transparent; }
     100% { border-right-color: #00ff00; }
 }
+
+.skills-container {
+    margin-top: 20px;
+    width: 80%;
+    max-width: 800px;
+}
+
+.skill {
+    margin: 10px 0;
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+}
+
+.skill-bar {
+    height: 25px;
+    border-radius: 25px;
+    width: 0;
+    transition: width 2s ease-in-out;
+}
+
+.html { background-color: #f16529; }
+.css { background-color: #2965f1; }
+.javascript { background-color: #f0db4f; }
+.python { background-color: #306998; }
+.rust { background-color: #dea584; }
