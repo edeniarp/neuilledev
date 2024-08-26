@@ -7,6 +7,7 @@ window.onload = function() {
 
 function startTerminalAnimation() {
     const terminal = document.getElementById('terminal');
+    const hiddenInput = document.getElementById('hiddenInput');
     const commands = [
         "C:\\Users\\User> python r!ft.py",
         "Initialisation...",
@@ -16,6 +17,8 @@ function startTerminalAnimation() {
     ];
     let i = 0;
     let typingSpeed = 100;
+
+    hiddenInput.focus();
 
     function typeCommand() {
         if (i < commands.length) {
@@ -46,9 +49,10 @@ function startTerminalAnimation() {
 
 function enableInput() {
     const terminal = document.getElementById('terminal');
+    const hiddenInput = document.getElementById('hiddenInput');
     const cursor = document.querySelector('.blink-cursor');
     
-    document.addEventListener('keydown', function(event) {
+    hiddenInput.addEventListener('keydown', function(event) {
         if (event.key === 'Enter') {
             terminal.innerHTML = ''; // Efface le contenu
             cursor.remove();
