@@ -16,7 +16,7 @@ function startTerminalAnimation() {
         "Tapez 'Enter' pour entrer >"
     ];
     let i = 0;
-    let typingSpeed = 100;
+    let typingSpeed = 50; // Réduit la vitesse pour taper 2 fois plus vite
 
     hiddenInput.focus();
 
@@ -51,9 +51,15 @@ function enableInput() {
     const terminal = document.getElementById('terminal');
     const hiddenInput = document.getElementById('hiddenInput');
     const cursor = document.querySelector('.blink-cursor');
-    
+
+    hiddenInput.addEventListener('input', function(event) {
+        terminal.innerHTML = terminal.innerHTML.replace(cursor.outerHTML, "") + hiddenInput.value;
+        terminal.innerHTML += cursor.outerHTML;
+    });
+
     hiddenInput.addEventListener('keydown', function(event) {
         if (event.key === 'Enter') {
+            event.preventDefault();
             terminal.innerHTML = ''; // Efface le contenu
             cursor.remove();
             displayDescription();
@@ -65,7 +71,7 @@ function displayDescription() {
     const terminal = document.getElementById('terminal');
     const description = "Je suis un développeur passionné avec une expertise en développement web full-stack. J'ai une solide expérience en JavaScript, Python, et des frameworks comme React et Django. Mon approche consiste à résoudre des problèmes complexes avec des solutions simples et efficaces. J'aime travailler sur des projets innovants et collaborer avec des équipes dynamiques pour créer des applications web de haute qualité.";
     let i = 0;
-    let typingSpeed = 50;
+    let typingSpeed = 25; // Vitesse pour la description
 
     function typeDescription() {
         if (i < description.length) {
@@ -74,8 +80,43 @@ function displayDescription() {
             setTimeout(typeDescription, typingSpeed);
         } else {
             terminal.innerHTML += '\n';
+            displaySkills();
         }
     }
 
     typeDescription();
 }
+
+function displaySkills() {
+    const skillsContainer = document.getElementById('skillsContainer');
+    const skills = [
+        { name: "HTML", level: 90, class: "html" },
+        { name: "CSS", level: 85, class: "css" },
+        { name: "JavaScript", level: 80, class: "javascript" },
+        { name: "Python", level: 75, class: "python" },
+        { name: "Rust", level: 60, class: "rust" }
+    ];
+
+    skills.forEach(skill => {
+        const skillElement = document.createElement('div');
+        skillElement.className = 'skill';
+        skillElement.innerHTML = `
+            <div>${skill.name}</div>
+            <div class="skill-bar ${skill.class}" style="width: 0;"></div>
+        `;
+        skills.forEach(skill => {
+        const skillElement = document.createElement('div');
+        skillElement.className = 'skill';
+        skillElement.innerHTML = `
+            <div>${skill.name}</div>
+            <div class="skill-bar ${skill.class}" style="width: 0;"></div>
+        `;
+        skillsContainer.appendChild(skillElement);
+
+        // Animer le remplissage des jauges après un court délai
+        setTimeout(() => {
+            const skillBar = skillElement.querySelector('.skill-bar');
+            skillBar.style.width = skill.level + '%';
+        }, 100);
+    });
+    }
