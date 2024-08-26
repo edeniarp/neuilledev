@@ -90,11 +90,11 @@ function displayDescription() {
 function displaySkills() {
     const skillsContainer = document.getElementById('skillsContainer');
     const skills = [
-        { name: "HTML", level: 0.9, class: "html" },
-        { name: "CSS", level: 0.85, class: "css" },
-        { name: "JavaScript", level: 0.75, class: "javascript" },
-        { name: "Python", level: 0.8, class: "python" },
-        { name: "Rust", level: 0.6, class: "rust" }
+        { name: "HTML", level: 0.9 },
+        { name: "CSS", level: 0.85 },
+        { name: "JavaScript", level: 0.75 },
+        { name: "Python", level: 0.8 },
+        { name: "Rust", level: 0.6 }
     ];
 
     let delay = 0;
@@ -105,18 +105,16 @@ function displaySkills() {
         skillElement.innerHTML = `
             <div class="skill-label">${skill.name}</div>
             <div class="skill-bar">
-                <div class="skill-bar-circle">
-                    <div class="fill ${skill.class}" style="--level: ${skill.level};"></div>
-                </div>
+                <div class="skill-bar-fill" style="--level: ${skill.level};"></div>
             </div>
         `;
         skillsContainer.appendChild(skillElement);
 
         // Ajoute un délai pour que les jauges apparaissent une à une
         setTimeout(() => {
-            skillElement.querySelector('.fill').classList.add('animate');
+            skillElement.querySelector('.skill-bar-fill').classList.add('animate');
         }, delay);
 
-        delay += 500; // 500ms de délai entre chaque jauge
+        delay += 2500; // 2.5s de délai entre chaque jauge
     });
 }
