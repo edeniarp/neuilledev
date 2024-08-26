@@ -127,8 +127,8 @@ body {
 
 .skill {
     margin: 10px;
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     position: relative;
 }
 
@@ -136,7 +136,7 @@ body {
     font-family: Arial, sans-serif;
     font-size: 16px;
     font-weight: bold;
-    color: #ffffff;
+    color: #000;
     text-align: center;
     position: absolute;
     top: 50%;
@@ -148,9 +148,7 @@ body {
 .skill-bar {
     width: 100%;
     height: 100%;
-    border-radius: 50%;
     position: relative;
-    overflow: hidden;
 }
 
 .skill-bar-circle {
@@ -160,27 +158,38 @@ body {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    border: 8px solid transparent;
-    border-top-color: #00ff00;
-    transform: rotate(-90deg);
+    border: 8px solid #000000;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    transform: rotate(-135deg);
     transform-origin: center;
 }
 
-.skill-bar-circle.animate {
+.skill-bar-circle .fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 8px solid transparent;
+    border-top-color: #00ff00;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    transform: rotate(0deg);
+    transform-origin: center;
     animation: fillCircle 2s ease-in-out forwards;
 }
 
 @keyframes fillCircle {
     from {
-        transform: rotate(-90deg);
+        transform: rotate(0deg);
     }
     to {
-        transform: rotate(calc(-90deg + 360deg * var(--level)));
+        transform: rotate(calc(360deg * var(--level)));
     }
 }
 
-.html .skill-bar-circle { border-top-color: #f16529; }
-.css .skill-bar-circle { border-top-color: #2965f1; }
-.javascript .skill-bar-circle { border-top-color: #f0db4f; }
-.python .skill-bar-circle { border-top-color: #306998; }
-.rust .skill-bar-circle { border-top-color: #dea584; }
+.html .fill { border-top-color: #f16529; }
+.css .fill { border-top-color: #2965f1; }
+.javascript .fill { border-top-color: #f0db4f; }
+.python .fill { border-top-color: #306998; }
+.rust .fill { border-top-color: #dea584; }
