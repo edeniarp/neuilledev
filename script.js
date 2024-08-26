@@ -118,3 +118,17 @@ function displaySkills() {
         delay += 2500; // 2.5s de délai entre chaque jauge
     });
 }
+
+function openProjectDetails() {
+    document.getElementById('projectDetails').classList.remove('hidden');
+    document.querySelector('.overlay').style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Pour empêcher le scroll
+}
+
+function closeProjectDetails() {
+    document.getElementById('projectDetails').classList.add('hidden');
+    document.querySelector('.overlay').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+document.querySelector('.overlay').addEventListener('click', closeProjectDetails);
