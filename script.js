@@ -13,10 +13,10 @@ function startTerminalAnimation() {
         "Initialisation...",
         "Chargement des modules...",
         "Connexion aux services...",
-        "Tapez 'Enter' pour entrer >"
+        "Cliquez sur votre touche 'Entrée' pour continuer >"
     ];
     let i = 0;
-    const typingSpeed = 50; // Vitesse de saisie
+    const typingSpeed = 75; // Vitesse de saisie
 
     hiddenInput.focus();
 
@@ -90,10 +90,10 @@ function displayDescription() {
 function displaySkills() {
     const skillsContainer = document.getElementById('skillsContainer');
     const skills = [
-        { name: "HTML", level: 0.9 },
-        { name: "CSS", level: 0.85 },
-        { name: "JavaScript", level: 0.75 },
-        { name: "Python", level: 0.8 },
+        { name: "HTML", level: 1 },
+        { name: "CSS", level: 0.9 },
+        { name: "JavaScript", level: 0.87 },
+        { name: "Python", level: 93 },
         { name: "Rust", level: 0.6 }
     ];
 
