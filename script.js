@@ -117,18 +117,36 @@ function displaySkills() {
 
         delay += 2500; // 2.5s de délai entre chaque jauge
     });
+
+    // Afficher la section "En développement :" après les jauges
+    setTimeout(() => {
+        document.querySelector('.development-section').classList.remove('hidden');
+        document.querySelector('.development-title').classList.add('show');
+    }, delay + 500); // Ajoute un petit délai après les jauges
 }
 
 function openProjectDetails() {
-    document.getElementById('projectDetails').classList.remove('hidden');
-    document.querySelector('.overlay').style.display = 'block';
-    document.body.style.overflow = 'hidden'; // Pour empêcher le scroll
+    const overlay = document.querySelector('.overlay');
+    const projectDetails = document.getElementById('projectDetails');
+
+    // Afficher l'overlay et les détails du projet
+    overlay.classList.remove('hidden');
+    projectDetails.classList.remove('hidden');
+    document.body.style.overflow = 'hidden'; // Empêche le défilement de la page
+
+    // Ajouter un écouteur pour fermer les détails du projet
+    overlay.addEventListener('click', closeProjectDetails);
 }
 
 function closeProjectDetails() {
-    document.getElementById('projectDetails').classList.add('hidden');
-    document.querySelector('.overlay').style.display = 'none';
-    document.body.style.overflow = 'auto';
-}
+    const overlay = document.querySelector('.overlay');
+    const projectDetails = document.getElementById('projectDetails');
 
-document.querySelector('.overlay').addEventListener('click', closeProjectDetails);
+    // Cacher l'overlay et les détails du projet
+    overlay.classList.add('hidden');
+    projectDetails.classList.add('hidden');
+    document.body.style.overflow = 'auto'; // Réactiver le défilement de la page
+
+    // Supprimer l'écouteur d'événements
+    overlay.removeEventListener('click', closeProjectDetails);
+}
