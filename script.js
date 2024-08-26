@@ -69,4 +69,9 @@ function displayDescription() {
             i++;
             setTimeout(typeDescription, typingSpeed);
         } else {
-            terminal.innerHTML += '\
+            terminal.innerHTML += '\n';
+        }
+    }
+
+    typeDescription();
+}
