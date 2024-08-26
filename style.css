@@ -161,6 +161,11 @@ body {
     width: calc(var(--level) * 100%);
 }
 
+/* Styles généraux et animations */
+.hidden {
+    display: none;
+}
+
 .development-section {
     margin-top: 30px;
     text-align: center;
@@ -172,6 +177,14 @@ body {
     margin-bottom: 20px;
     position: relative;
     display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.development-title.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .development-title span {
@@ -238,10 +251,6 @@ body {
 .project-details img {
     width: 100%;
     border-radius: 10px;
-}
-
-.hidden {
-    display: none;
 }
 
 .overlay {
