@@ -16,7 +16,7 @@ function startTerminalAnimation() {
         "Tapez 'Enter' pour entrer >"
     ];
     let i = 0;
-    let typingSpeed = 50; // Réduit la vitesse pour taper 2 fois plus vite
+    const typingSpeed = 50; // Vitesse de saisie
 
     hiddenInput.focus();
 
@@ -71,7 +71,7 @@ function displayDescription() {
     const terminal = document.getElementById('terminal');
     const description = "Je suis un développeur passionné avec une expertise en développement web full-stack. J'ai une solide expérience en JavaScript, Python, et des frameworks comme React et Django. Mon approche consiste à résoudre des problèmes complexes avec des solutions simples et efficaces. J'aime travailler sur des projets innovants et collaborer avec des équipes dynamiques pour créer des applications web de haute qualité.";
     let i = 0;
-    let typingSpeed = 25; // Vitesse pour la description
+    const typingSpeed = 25; // Vitesse pour la description
 
     function typeDescription() {
         if (i < description.length) {
@@ -104,13 +104,6 @@ function displaySkills() {
             <div>${skill.name}</div>
             <div class="skill-bar ${skill.class}" style="width: 0;"></div>
         `;
-        skills.forEach(skill => {
-        const skillElement = document.createElement('div');
-        skillElement.className = 'skill';
-        skillElement.innerHTML = `
-            <div>${skill.name}</div>
-            <div class="skill-bar ${skill.class}" style="width: 0;"></div>
-        `;
         skillsContainer.appendChild(skillElement);
 
         // Animer le remplissage des jauges après un court délai
@@ -119,4 +112,4 @@ function displaySkills() {
             skillBar.style.width = skill.level + '%';
         }, 100);
     });
-    }
+}
